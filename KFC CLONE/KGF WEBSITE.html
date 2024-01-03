@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KFC Clone Project</title>
+    <style>
+        :root {
+            --background-light: #ffffff;
+            --text-light: #000000;
+            --link-light: #0000ff;
+            --background-dark: #222222;
+            --text-dark: #ffffff;
+            --link-dark: #00bfff;
+        }
+
+        body.light-mode {
+            background-color: var(--background-light);
+            color: var(--text-light);
+        }
+
+        body.dark-mode {
+            background-color: var(--background-dark);
+            color: var(--text-dark);
+        }
+
+        a {
+            color: var(--link-light);
+        }
+
+        body.dark-mode a {
+            color: var(--link-dark);
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; /* Reset default margin */
+        }
+
+        /* Add styles for the header section */
+        header {
+            background-color: #FFD700; /* KFC's yellow color */
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Style the navigation links */
+        nav a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 0 15px;
+        }
+
+        /* Style the main content */
+        main {
+            padding: 20px;
+            text-align: center; /* Center-align main content */
+        }
+
+        /* Style the images */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Style the categories */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .category {
+            flex: 0 0 calc(25% - 20px); /* Adjust the width as needed */
+            margin: 10px;
+            text-align: center;
+        }
+        
+        .category img {
+            max-width: 100%;
+            height: auto;
+        }
+        .order-button {
+            display: inline-block;
+            background-color: #FFD700; /* KFC's yellow color */
+            color: #000;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .order-button:hover {
+            background-color: #FFC107; /* Darker yellow on hover */
+            .navbar {
+            background-color: #FFD700; /* KFC's yellow color */
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        navbar {
+            background-color: #FFD700; /* KFC's yellow color */
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 0 15px;
+            cursor: pointer;
+        }    
+
+    </style>
+</head>
+<body class="light-mode">
+    <header>
+        <img src="kfc.png" alt="KFC Logo" width="100">
+        <nav>
+            <a href="#">Menu</a>
+            <a href="#">Deals</a>
+            <a href="#">Sign In</a>
+        </nav>
+    </header>
+    <hr>
+    <button id="theme-toggle">Toggle Theme</button>
+    <main>
+        <h1>WELCOME TO KFC!</h1>
+        <p>Let's order for delivery, pick up, or dine-in.</p>
+
+        <h2>BROWSE CATEGORIES</h2>
+        <div class="categories">
+            <div class="category">
+                <img src="https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/categories/CAT233.jpg?ver=33.02" alt="Category 1" width="200">
+                <p>Peri Peri Chicken</p>
+                <a href="#" class="order-button">Place Order</a>
+            </div>
+            <div class="category">
+                <img src="https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/categories/CAT224.jpg?ver=33.02" alt="Category 2" width="200">
+                <p>Value Snackers</p>
+                <a href="#" class="order-button">Place Order</a>
+            </div>
+            <div class="category">
+                <img src="https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/categories/CAT170.jpg?ver=33.02" alt="Category 3" width="200">
+                <p>Chicken Rolls</p>
+                <a href="#" class="order-button">Place Order</a>
+            </div>
+            <div class="category">
+                <img src="https://orderserv-kfc-assets.yum.com/15895bb59f7b4bb588ee933f8cd5344a/images/categories/CAT86.jpg?ver=33.02" alt="Category 4" width="200">
+                <p>Chicken Buckets</p>
+                <a href="#" class="order-button">Place Order</a>
+            </div>
+        </div>
+    </main>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+        });
+        const menuLink = document.querySelector('a[href="#menu"]');
+        const dealsLink = document.querySelector('a[href="#deals"]');
+        const signInLink = document.querySelector('a[href="#signin"]');
+
+        menuLink.addEventListener('click', () => {
+            document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        dealsLink.addEventListener('click', () => {
+            document.getElementById('deals').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        signInLink.addEventListener('click', () => {
+            document.getElementById('signin').scrollIntoView({ behavior: 'smooth' });
+        });
+
+    </script>
+    <script>
+    const orderButtons = document.querySelectorAll('.order-button');
+    orderButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
+            // You can implement the order placement logic here
+            // For example, show a confirmation message or redirect to an order page
+            alert('Order placed for ' + event.target.parentElement.querySelector('p').textContent);
+        });
+    });
+</script>
+</body>
+</html>
